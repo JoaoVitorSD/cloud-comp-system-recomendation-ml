@@ -1,6 +1,6 @@
 from fpgrowth_py import fpgrowth
 import pandas as pd
-
+import json
 df = pd.read_csv("2023_spotify_ds1.csv")
 grouped_df = df.groupby('pid')
 grouped_df_dics =  grouped_df["track_uri"].apply(list).to_dict()
@@ -27,4 +27,5 @@ output = []
 for rule in rules:
     output.append(find_matchs(rule))
 
+# json.json_dump({"recommendationList": output})
 print(output)
