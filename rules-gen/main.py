@@ -1,5 +1,4 @@
 from fpgrowth_py import fpgrowth
-from functools import reduce
 import pandas as pd
 import json
 

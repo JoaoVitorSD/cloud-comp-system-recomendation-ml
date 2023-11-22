@@ -1,0 +1,21 @@
+name: Rules Gen V1
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag joaovitorsd/tp-cloud-comp-rules-gen:latest
+
+      - name: Docker Push
+        run: docker push joaovitorsd/tp-cloud-comp-rules-gen:latest
