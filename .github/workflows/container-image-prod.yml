@@ -18,8 +18,8 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag joaovitorsd/tp-cloud-comp-rules-gen:latest
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag joaovitorsd/tp-cloud-comp-rules-gen:latest
 
-      - name: Docker Push
-        run: docker push joaovitorsd/tp-cloud-comp-rules-gen:latest
+    - name: Docker Push
+      run: docker push joaovitorsd/tp-cloud-comp-rules-gen:latest
