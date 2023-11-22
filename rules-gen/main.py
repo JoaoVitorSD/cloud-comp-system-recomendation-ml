@@ -1,7 +1,9 @@
 from fpgrowth_py import fpgrowth
+from functools import reduce
 import pandas as pd
 import json
-df = pd.read_csv("2023_spotify_ds1.csv")
+
+df = pd.read_csv("/home/datasets/spotify-sample.csv")
 grouped_df = df.groupby('pid')
 grouped_df_dics =  grouped_df["track_uri"].apply(list).to_dict()
 freqItemSet, rules = fpgrowth(grouped_df["track_uri"].apply(list).values.tolist(), minSupRatio=0.07, minConf=0.2)
@@ -20,12 +22,18 @@ def find_matchs(rule):
     for pid, tracks in grouped_df_dics.items():
         if filter_playlist(tracks, musics):
             matchs.append(pid)
-    return { "playlists":matchs, "rule": [rule[0], rule[1]], "percentage": rule[2]}
+    musics = []
+    for m in rule[0]:
+        musics.append(m);
+    return { "playlists":matchs, "tracks": musics,  "percentage": rule[2]}
     
 output = []
 
 for rule in rules:
     output.append(find_matchs(rule))
 
-# json.json_dump({"recommendationList": output})
-print(output)
+
+json_dict = {"recommendationList": output}
+
+with open("/home/joaodepollo/data.json", "w") as fp:
+    json.dump(json_dict, fp)
