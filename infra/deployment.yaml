@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: datase
           hostPath:
-            path: /home/datasets/spotify-sample
+            path: /home/datasets/
         - name: project2-pv-joaodepollo
           persistentVolumeClaim:
             claimName: project2-pv-joaodepollo
