@@ -2,14 +2,12 @@ from fpgrowth_py import fpgrowth
 import pandas as pd
 import json
 
-df = pd.read_csv("/home/datasets/spotify-sample.csv")
+df = pd.read_csv("/home/datasets/spotify-sample/playlists-sample-ds1.csv")
 grouped_df = df.groupby('pid')
 grouped_df_dics =  grouped_df["track_uri"].apply(list).to_dict()
 freqItemSet, rules = fpgrowth(grouped_df["track_uri"].apply(list).values.tolist(), minSupRatio=0.07, minConf=0.2)
-# print(rules)
 def filter_playlist(tracks, rules):
     if not(set(tracks).intersection(rules)):
-        # print({track['track_uri']})
         return False
     return True
 
@@ -34,5 +32,5 @@ for rule in rules:
 
 json_dict = {"recommendationList": output}
 
-with open("/home/joaodepollo/project2-pv/data.json", "w") as fp:
+with open("/home/data.json", "w") as fp:
     json.dump(json_dict, fp)
