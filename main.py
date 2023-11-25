@@ -34,5 +34,5 @@ for rule in rules:
 
 json_dict = {"recommendationList": output}
 
-with open("/home/joaodepollo/data.json", "w") as fp:
+with open("/home/joaodepollo/project2-pv/data.json", "w") as fp:
     json.dump(json_dict, fp)
