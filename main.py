@@ -2,7 +2,7 @@ from fpgrowth_py import fpgrowth
 import pandas as pd
 import json
 
-df = pd.read_csv("/home/datasets/spotify-sample/playlists-sample-ds1.csv")
+df = pd.read_csv("/usr/src/playlists-sample-ds1.csv")
 grouped_df = df.groupby('pid')
 grouped_df_dics =  grouped_df["track_uri"].apply(list).to_dict()
 freqItemSet, rules = fpgrowth(grouped_df["track_uri"].apply(list).values.tolist(), minSupRatio=0.07, minConf=0.2)
