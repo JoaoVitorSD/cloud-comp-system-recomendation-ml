@@ -18,7 +18,7 @@ spec:
             path: /home/datasets/spotify-sample
         - name: project2-pv-joaodepollo
           persistentVolumeClaim:
-            claimName: project2-pvc-joaodepollo
+            claimName: project2-pv-joaodepollo
       containers:
         - name: api-recommendation
           image:  joaovitorsd/tp-cloud-comp-rules-gen:latest
