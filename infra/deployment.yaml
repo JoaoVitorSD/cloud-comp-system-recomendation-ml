@@ -24,6 +24,6 @@ spec:
           image:  joaovitorsd/tp-cloud-comp-rules-gen:latest
           volumeMounts:
             - name: project2-pv-joaodepollo
-            mountPath: /usr/src
+              mountPath: /usr/src
             - name: datase
               mountPath: /home/dataset
