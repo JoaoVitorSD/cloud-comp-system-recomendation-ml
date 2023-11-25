@@ -2,6 +2,8 @@ from fpgrowth_py import fpgrowth
 import pandas as pd
 import json
 
+
+print("Reading File")
 df = pd.read_csv("/home/dataset/2023_spotify_ds1.csv")
 grouped_df = df.groupby('pid')
 grouped_df_dics =  grouped_df["track_uri"].apply(list).to_dict()
@@ -31,6 +33,7 @@ for rule in rules:
 
 
 json_dict = {"recommendationList": output}
-
+print("Writing output")
 with open("/usr/src/data.json", "w") as fp:
     json.dump(json_dict, fp)
+print("Saved output")
