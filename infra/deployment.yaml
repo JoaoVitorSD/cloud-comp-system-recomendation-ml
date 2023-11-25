@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joao-marcos-api-recommendation
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: joao-marcos-api-recommendation
+  template:
+    metadata:
+      labels:
+        app: joao-marcos-api-recommendation
+    spec:
+      volumes:
+        - name: datase
+          hostPath:
+            path: /home/datasets/spotify-sample
+        - name: project2-pv-joaodepollo
+          persistentVolumeClaim:
+            claimName: project2-pvc-joaodepollo
+      containers:
+        - name: api-recommendation
+          image:  joaovitorsd/tp-cloud-comp-rules-gen:latest
+          volumeMounts:
+            - name: project2-pv-joaodepollo
+            mountPath: /usr/src
+            - name: datase
+              mountPath: /home/dataset
