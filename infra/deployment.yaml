@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: joao-marcos-rule-recommendation
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: joao-marcos-rule-recommendation
