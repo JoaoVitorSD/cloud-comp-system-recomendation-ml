@@ -6,8 +6,8 @@ import json
 print("Reading File")
 df = pd.read_csv("/home/dataset/2023_spotify_ds1.csv")
 grouped_df = df.groupby('pid')
-grouped_df_dics =  grouped_df["track_uri"].apply(list).to_dict()
-freqItemSet, rules = fpgrowth(grouped_df["track_uri"].apply(list).values.tolist(), minSupRatio=0.07, minConf=0.2)
+grouped_df_dics =  grouped_df["track_name"].apply(list).to_dict()
+freqItemSet, rules = fpgrowth(grouped_df["track_name"].apply(list).values.tolist(), minSupRatio=0.07, minConf=0.2)
 def filter_playlist(tracks, rules):
     if not(set(tracks).intersection(rules)):
         return False

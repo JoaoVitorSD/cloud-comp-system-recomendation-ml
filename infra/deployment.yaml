@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: joao-marcos-api-recommendation
+  name: joao-marcos-rule-recommendation
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: joao-marcos-api-recommendation
+      app: joao-marcos-rule-recommendation
   template:
     metadata:
       labels:
-        app: joao-marcos-api-recommendation
+        app: joao-marcos-rule-recommendation
     spec:
       volumes:
-        - name: datase
+        - name: dataset
           hostPath:
             path: /home/datasets/
         - name: project2-pv-joaodepollo
@@ -25,5 +25,5 @@ spec:
           volumeMounts:
             - name: project2-pv-joaodepollo
               mountPath: /usr/src
-            - name: datase
+            - name: dataset
               mountPath: /home/dataset
