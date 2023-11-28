@@ -27,3 +27,4 @@ spec:
               mountPath: /usr/src
             - name: dataset
               mountPath: /home/dataset
+      restartPolicy: Always
